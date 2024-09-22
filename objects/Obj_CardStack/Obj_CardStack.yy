@@ -1,9 +1,9 @@
 {
   "$GMObject":"",
-  "%Name":"Object1",
+  "%Name":"Obj_CardStack",
   "eventList":[],
   "managed":true,
-  "name":"Object1",
+  "name":"Obj_CardStack",
   "overriddenProperties":[],
   "parent":{
     "name":"Objects",

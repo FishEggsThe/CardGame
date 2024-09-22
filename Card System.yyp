@@ -34,8 +34,9 @@
   },
   "name":"Card System",
   "resources":[
-    {"id":{"name":"Object1","path":"objects/Object1/Object1.yy",},},
+    {"id":{"name":"Obj_CardStack","path":"objects/Obj_CardStack/Obj_CardStack.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Scr_Card","path":"scripts/Scr_Card/Scr_Card.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
