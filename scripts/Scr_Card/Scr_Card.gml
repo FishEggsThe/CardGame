@@ -1,11 +1,13 @@
 function Card(_symbol, _number) constructor {
 	symbol = _symbol
 	number = _number
+	back = 0
 	
-	static DrawCard = function() {
-		var width = 50; var height = 50
-		draw_set_color(c_white)
-		draw_rectangle(x-width, y-height, x+width, y+width, false)
+	static DrawCard = function(_x, _y) {
+		var width = 25; var height = 50
+		var cardColor = (back ? c_red : c_white)
+		draw_set_color(cardColor)
+		draw_rectangle(_x-width, _y-height, _x+width, _y+width, false)
 	}
 }
 
