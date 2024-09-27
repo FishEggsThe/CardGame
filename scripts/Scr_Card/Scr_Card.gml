@@ -27,15 +27,17 @@ function CreateDeck() {
 
 function ShuffleDeck(_deck) {
 	var deckSize = array_length(_deck)
-	var shuffledDeck = array_create(deckSize)
+	var shuffledDeck = []
 	
 	for(var i = deckSize; i > 0; i--) {
 		var randomIndex = irandom(i-1)
 		shuffledDeck[deckSize-i] = _deck[randomIndex]
 		array_delete(_deck, randomIndex, 1)
+		//show_debug_message(string(array_length(_deck)) + " / " + string(array_length(shuffledDeck)) + "\n")
 	}
 	
-	_deck = shuffledDeck
+	//show_debug_message("Final: " + string(array_length(_deck)) + " / " + string(array_length(shuffledDeck)) + "\n")
+	return shuffledDeck
 	//DebugPrintDeck(_deck)
 }
 

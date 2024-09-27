@@ -1,5 +1,5 @@
 deck = CreateDeck()
-DebugPrintDeck(deck)
+//DebugPrintDeck(deck)
 
-ShuffleDeck(deck)
+deck = ShuffleDeck(deck)
 DebugPrintDeck(deck)
