@@ -10,7 +10,7 @@ function Card(_symbol, _number) constructor {
 		}
 	}
 	number = _number
-	front = 0
+	front = 1
 	side = -1
 	
 	static DrawCard = function(_x, _y) {
@@ -18,10 +18,12 @@ function Card(_symbol, _number) constructor {
 		var halfHeight = height/2; var halfWidth = width/2
 		var cardColor = (side >= 0 ? c_white : c_red)
 		
-		side = sin(current_time/2000)
+		//side = sin(current_time/2000)
+		if keyboard_check_pressed(vk_space) {front*=-1}
+		side = lerp(side, front, 0.3)
 		
 		draw_set_color(cardColor)
-		draw_rectangle(_x-halfWidth*side, _y-halfHeight, _x+halfWidth*side, _y+halfHeight, false)
+		draw_roundrect(_x-halfWidth*side, _y-halfHeight, _x+halfWidth*side, _y+halfHeight, false)
 		if side >= 0 {
 			for(var i = -1; i <= 1; i+=2) {
 				draw_sprite_ext(chives, symbolNum, _x+(-i)*side*halfWidth, _y+i*halfHeight,
