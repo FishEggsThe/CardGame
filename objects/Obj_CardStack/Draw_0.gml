@@ -1,2 +1,2 @@
 draw_text(5, 5, deck)
-deck[0].DrawCard(50, 50)
+deck[0].DrawCard(500, 500)

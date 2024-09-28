@@ -1,28 +1,49 @@
+global.symbols = ["hearts", "spades", "diamonds", "clubs"]
+
 function Card(_symbol, _number) constructor {
 	symbol = _symbol
+	symbolNum = 0
+	for(var i = 0; i < 4; i++) {
+		if global.symbols[i] == symbol {
+			symbolNum = i
+			break
+		}
+	}
 	number = _number
-	back = 0
+	front = 0
+	side = -1
 	
 	static DrawCard = function(_x, _y) {
-		var width = 25; var height = 50
-		var cardColor = (back ? c_red : c_white)
+		var height = 200; var width = height*2.25/3.5
+		var halfHeight = height/2; var halfWidth = width/2
+		var cardColor = (side >= 0 ? c_white : c_red)
+		
+		side = sin(current_time/2000)
+		
 		draw_set_color(cardColor)
-		draw_rectangle(_x-width, _y-height, _x+width, _y+width, false)
+		draw_rectangle(_x-halfWidth*side, _y-halfHeight, _x+halfWidth*side, _y+halfHeight, false)
+		if side >= 0 {
+			for(var i = -1; i <= 1; i+=2) {
+				draw_sprite_ext(chives, symbolNum, _x+(-i)*side*halfWidth, _y+i*halfHeight,
+								side, 1, 180*(i==1), c_white, 1)
+			}
+		}
 	}
 }
 
-function CreateDeck() {
+function CreateDeck(_shuffle = true) {
 	var deck = array_create(52)
-	var symbols = ["hearts", "spades", "diamonds", "clubs"]
 	var index = 0; var card = noone
 	
 	for(var i = 0; i < 4; i++) {
 		for(var j = 1; j <= 13; j++) {
-			deck[index] = new Card(symbols[i], j);
+			deck[index] = new Card(global.symbols[i], j);
 			//show_debug_message(deck[index])
 			index++
 		}
 	}
+	
+	if _shuffle {deck = ShuffleDeck(deck)}
 	
 	return deck
 }
