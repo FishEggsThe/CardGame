@@ -10,7 +10,7 @@ function Card(_symbol, _number) constructor {
 		}
 	}
 	number = _number
-	front = 1
+	front = -1
 	side = -1
 	
 	static DrawCard = function(_x, _y) {
@@ -18,8 +18,7 @@ function Card(_symbol, _number) constructor {
 		var halfHeight = height/2; var halfWidth = width/2
 		var cardColor = (side >= 0 ? c_white : c_red)
 		
-		//side = sin(current_time/2000)
-		if keyboard_check_pressed(vk_space) {front*=-1}
+		if keyboard_check_pressed(vk_space) {FlipCard()} // Put in debug
 		side = lerp(side, front, 0.3)
 		
 		draw_set_color(cardColor)
@@ -30,6 +29,9 @@ function Card(_symbol, _number) constructor {
 								side, 1, 180*(i==1), c_white, 1)
 			}
 		}
+	}
+	static FlipCard = function() {
+		front *= -1
 	}
 }
 
