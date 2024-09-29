@@ -27,6 +27,9 @@ function Card(_symbol, _number) constructor {
 			for(var i = -1; i <= 1; i+=2) {
 				draw_sprite_ext(chives, symbolNum, _x+(-i)*side*halfWidth, _y+i*halfHeight,
 								side, 1, 180*(i==1), c_white, 1)
+				
+				draw_set_halign(fa_left); draw_set_valign(fa_top); draw_set_color(c_black)
+				draw_text_transformed(_x+(-i)*(-side)*halfWidth, _y+i*halfHeight, number, 1, 1, 180*(i==1))
 			}
 		}
 	}
