@@ -39,7 +39,7 @@ function Card(_symbol, _number) constructor {
 }
 
 function CreateCard(_symbol, _number, _x = x, _y = y) {
-	with instance_create_layer(_x, _y, "Instances", Obj_Card) {
+	with instance_create_depth(_x, _y, -instance_number(Obj_Card), Obj_Card) {
 		cardInfo = new Card(_symbol, _number)
 		cardInfo.FlipCard()
 	}
