@@ -16,7 +16,7 @@ function Card(_symbol, _number) constructor {
 	static DrawCard = function(_x, _y) {
 		var height = 200; var width = height*2.25/3.5
 		var halfHeight = height/2; var halfWidth = width/2
-		var cardColor = (side >= 0 ? c_white : c_red)
+		var cardColor = c_red; var border = 5
 		
 		if keyboard_check_pressed(vk_space) {FlipCard()} // Put in debug
 		side = lerp(side, front, 0.3)
@@ -24,12 +24,14 @@ function Card(_symbol, _number) constructor {
 		draw_set_color(cardColor)
 		draw_roundrect(_x-halfWidth*side, _y-halfHeight, _x+halfWidth*side, _y+halfHeight, false)
 		if side >= 0 {
+			draw_set_color(c_white)
+			draw_roundrect(_x-halfWidth*side+border, _y-halfHeight+border, _x+halfWidth*side-border, _y+halfHeight-border, false)
 			for(var i = -1; i <= 1; i+=2) {
-				draw_sprite_ext(chives, symbolNum, _x+(-i)*side*halfWidth, _y+i*halfHeight,
+				draw_sprite_ext(chives, symbolNum, _x+(-i)*side*halfWidth+border*i, _y+i*halfHeight+border*(-i),
 								side, 1, 180*(i==1), c_white, 1)
 				
 				draw_set_halign(fa_left); draw_set_valign(fa_top); draw_set_color(c_black)
-				draw_text_transformed(_x+(-i)*(-side)*halfWidth, _y+i*halfHeight, number, 1, 1, 180*(i==1))
+				draw_text_transformed(_x+(-i)*(-side)*halfWidth+border*(-i), _y+i*halfHeight+border*(-i), number, 1, 1, 180*(i==1))
 			}
 		}
 	}
