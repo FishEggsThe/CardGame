@@ -41,10 +41,12 @@ function Card(_symbol, _number) constructor {
 }
 
 function CreateCard(_symbol, _number, _x = x, _y = y) {
-	with instance_create_depth(_x, _y, -instance_number(Obj_Card), Obj_Card) {
+	var card = instance_create_depth(_x, _y, -instance_number(Obj_Card), Obj_Card)
+	with card {
 		cardInfo = new Card(_symbol, _number)
 		cardInfo.FlipCard()
 	}
+	array_insert(Obj_CardPriorityCheck.cardQueue, 0, card)
 }
 
 function CreateDeck(_shuffle = true) {
