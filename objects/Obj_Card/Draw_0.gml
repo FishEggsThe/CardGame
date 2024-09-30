@@ -1,0 +1,1 @@
+cardInfo.DrawCard(x, y)
