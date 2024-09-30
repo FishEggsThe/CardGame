@@ -38,6 +38,13 @@ function Card(_symbol, _number) constructor {
 	}
 }
 
+function CreateCard(_symbol, _number, _x = x, _y = y) {
+	with instance_create_layer(_x, _y, "Instances", Obj_Card) {
+		cardInfo = new Card(_symbol, _number)
+		cardInfo.FlipCard()
+	}
+}
+
 function CreateDeck(_shuffle = true) {
 	var deck = array_create(52)
 	var index = 0; var card = noone

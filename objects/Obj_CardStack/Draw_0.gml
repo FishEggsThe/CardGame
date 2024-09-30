@@ -1,2 +1,3 @@
 draw_text(5, 5, deck)
-deck[0].DrawCard(500, 500)
+if array_length(deck) > 0
+	deck[0].DrawCard(x, y)
