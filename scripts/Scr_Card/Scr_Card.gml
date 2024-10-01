@@ -100,24 +100,11 @@ function FindNearestTopCard(_card) {
 	// Find the closest top card
 	for(var i = 0; i < numOfTopCards; i++) {
 		var nextTopCard = topCards[| i]
-		if nextTopCard.top {
+		if nextTopCard.cardAbove == noone {
 			return nextTopCard
 		}
 	}
 	return noone
-	
-	// Determine nearest top card
-	//var nearest = topCards[| 0]
-	//var nearestDist = point_distance(x, y, nearest.x, nearest.y)
-	//for(var i = 1; i < numOfTopCards; i++) {
-	//	var nextDist = distance_to_object(topCards[| i])
-	//	if nextDist < nearestDist {
-	//		nearest = topCards[| i]
-	//		nearestDist = nextDist
-	//	}
-	//}
-	
-	//return nearest
 }
 
 function DebugPrintDeck(_deck) {

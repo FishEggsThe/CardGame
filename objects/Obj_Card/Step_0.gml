@@ -11,10 +11,14 @@ if held {
 	if mouse_check_button_released(mb_left) {
 		held = false
 		
-		var cardUnder = instance_place(x, y, Obj_Card)
-		if (cardUnder != noone && cardUnder.top) {
-			cardUnder.top = false; top = true
-			stackedOn = cardUnder
+		var cardUnder = FindNearestTopCard(id)
+		if (cardUnder != noone && cardUnder.cardAbove == noone) {
+			// Card below placed card
+			cardUnder.cardAbove = id
+			
+			// Card on top
+			cardAbove = noone
+			cardBelow = cardUnder
 			
 		}
 	}
