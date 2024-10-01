@@ -1,7 +1,6 @@
 if held {
 	x = oX + (mouse_x - oMouseX)
 	y = oY + (mouse_y - oMouseY)
-	var xOffset = 5; var yOffset = 50
 	var nextCard = cardAbove
 	while (nextCard != noone) {
 		nextCard.x = nextCard.cardBelow.x + xOffset

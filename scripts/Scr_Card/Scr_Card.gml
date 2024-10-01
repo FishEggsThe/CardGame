@@ -105,13 +105,6 @@ function PrioritizeCard(_i) {
 		array_insert(cardQueue, 0, cardQueue[nextI])
 		array_delete(cardQueue, nextI+1, 1)
 	});
-	//var nextCard = cardQueue[0].cardAbove
-	//while (nextCard != noone) {
-	//	var nextI = array_get_index(cardQueue, nextCard)
-	//	array_insert(cardQueue, 0, cardQueue[nextI])
-	//	array_delete(cardQueue, nextI+1, 1)
-	//	nextCard = cardQueue[0].cardAbove
-	//}
 				
 	SetCardDepths()
 }
@@ -131,13 +124,16 @@ function FindNearestTopCard(_card) {
 	numOfTopCards = ds_list_size(topCards)
 	
 	// Find the closest top card
+	var chosenTopCard = noone
 	for(var i = 0; i < numOfTopCards; i++) {
 		var nextTopCard = topCards[| i]
 		if nextTopCard.cardAbove == noone {
-			return nextTopCard
+			chosenTopCard = nextTopCard
+			break
 		}
 	}
-	return noone
+	ds_list_destroy(topCards)
+	return chosenTopCard
 }
 
 function DebugPrintDeck(_deck) {
