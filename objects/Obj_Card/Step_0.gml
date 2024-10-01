@@ -18,18 +18,18 @@ if held {
 			cardUnder.cardAbove = id
 			
 			// Card on top
-			cardAbove = noone
+			//cardAbove = noone
 			cardBelow = cardUnder
 			
 			// Positioning placed card over cardUnder nicely
 			x = cardUnder.x + xOffset
 			y = cardUnder.y + yOffset
 			nextCard = cardAbove
-			//while (nextCard != noone) {
-			//	nextCard.x = nextCard.cardBelow.x + xOffset
-			//	nextCard.y = nextCard.cardBelow.y + yOffset
-			//	nextCard = nextCard.cardAbove
-			//}
+			while (nextCard != noone) {
+				nextCard.x = nextCard.cardBelow.x + xOffset
+				nextCard.y = nextCard.cardBelow.y + yOffset
+				nextCard = nextCard.cardAbove
+			}
 		}
 	}
 }
