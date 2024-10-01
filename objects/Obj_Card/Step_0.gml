@@ -8,5 +8,13 @@
 if held {
 	x = oX + (mouse_x - oMouseX)
 	y = oY + (mouse_y - oMouseY)
-	if mouse_check_button_released(mb_left) {held = false}
+	if mouse_check_button_released(mb_left) {
+		held = false
+		
+		var cardUnder = instance_place(x, y, Obj_Card)
+		if (cardUnder != noone && cardUnder.top) {
+			cardUnder.top = false; top = true
+			
+		}
+	}
 }
