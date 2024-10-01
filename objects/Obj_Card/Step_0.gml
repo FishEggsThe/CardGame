@@ -8,6 +8,7 @@
 if held {
 	x = oX + (mouse_x - oMouseX)
 	y = oY + (mouse_y - oMouseY)
+	
 	if mouse_check_button_released(mb_left) {
 		held = false
 		
@@ -20,6 +21,9 @@ if held {
 			cardAbove = noone
 			cardBelow = cardUnder
 			
+			// Positioning placed card over cardUnder nicely
+			x = cardUnder.x
+			y = cardUnder.y + 50
 		}
 	}
 }
