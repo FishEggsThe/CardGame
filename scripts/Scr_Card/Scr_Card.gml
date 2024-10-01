@@ -82,6 +82,14 @@ function ShuffleDeck(_deck) {
 	//DebugPrintDeck(_deck)
 }
 
+function ParseThroughStackAbove(_card, _function) {
+	var nextCard = _card.cardAbove
+	while (nextCard != noone) {
+		_function(nextCard)
+		nextCard = nextCard.cardAbove
+	}
+}
+
 function SetCardDepths() {
 	array_foreach(cardQueue, function(_element, _index){
 		_element.depth = _index - instance_number(Obj_Card)
@@ -92,13 +100,18 @@ function PrioritizeCard(_i) {
 	array_insert(cardQueue, 0, cardQueue[_i])
 	array_delete(cardQueue, _i+1, 1)
 	
-	var nextCard = cardQueue[0].cardAbove
-	while (nextCard != noone) {
-		var nextI = array_get_index(cardQueue, nextCard)
+	ParseThroughStackAbove(cardQueue[0], function(_nextCard) {
+		var nextI = array_get_index(cardQueue, _nextCard)
 		array_insert(cardQueue, 0, cardQueue[nextI])
 		array_delete(cardQueue, nextI+1, 1)
-		nextCard = cardQueue[0].cardAbove
-	}
+	});
+	//var nextCard = cardQueue[0].cardAbove
+	//while (nextCard != noone) {
+	//	var nextI = array_get_index(cardQueue, nextCard)
+	//	array_insert(cardQueue, 0, cardQueue[nextI])
+	//	array_delete(cardQueue, nextI+1, 1)
+	//	nextCard = cardQueue[0].cardAbove
+	//}
 				
 	SetCardDepths()
 }
