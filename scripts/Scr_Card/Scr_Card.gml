@@ -19,7 +19,7 @@ function Card(_symbol, _number) constructor {
 		var cardColor = [c_red, c_black]; var border = 5
 		var backColor = c_maroon
 		
-		if keyboard_check_pressed(vk_space) {FlipCard()} // Put in debug
+		//if keyboard_check_pressed(vk_space) {FlipCard()}
 		side = lerp(side, front, 0.3)
 		
 		if side >= 0 {
