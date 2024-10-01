@@ -82,6 +82,15 @@ function ShuffleDeck(_deck) {
 	//DebugPrintDeck(_deck)
 }
 
+function PrioritizeCard(_i) {
+	array_insert(cardQueue, 0, cardQueue[_i])
+	array_delete(cardQueue, _i+1, 1)
+				
+	array_foreach(cardQueue, function(_element, _index){
+		_element.depth = _index - instance_number(Obj_Card)
+	});
+}
+
 function DebugPrintDeck(_deck) {
 	array_foreach(_deck, function(_element, _index){
 		show_debug_message(string(_index) + ": " + string(_element))

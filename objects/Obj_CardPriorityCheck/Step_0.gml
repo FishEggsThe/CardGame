@@ -9,12 +9,7 @@ if mouse_check_button_pressed(mb_left) {
 			
 			// Shift priority list
 			if i > 0 {
-				array_insert(cardQueue, 0, cardQueue[i])
-				array_delete(cardQueue, i+1, 1)
-				
-				array_foreach(cardQueue, function(_element, _index){
-					_element.depth = _index - instance_number(Obj_Card)
-				});
+				PrioritizeCard(i)
 			}
 			break
 		}
