@@ -1,4 +1,5 @@
 cardInfo.DrawCard(x, y)
-draw_text(x, y-15, FindNearestTopCard(id))
-draw_text(x, y, cardAbove)
-draw_text(x, y+15, cardBelow)
+draw_set_halign(fa_center)
+draw_text(x, y-15, "Near: " + string(FindNearestTopCard(id)))
+draw_text(x, y, "Above: " + string(cardAbove))
+draw_text(x, y+15, "Below: " + string(cardBelow))
