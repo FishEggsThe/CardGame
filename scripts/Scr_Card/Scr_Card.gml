@@ -82,6 +82,12 @@ function ShuffleDeck(_deck) {
 	//DebugPrintDeck(_deck)
 }
 
+function SetCardDepths() {
+	array_foreach(cardQueue, function(_element, _index){
+		_element.depth = _index - instance_number(Obj_Card)
+	});
+}
+
 function PrioritizeCard(_i) {
 	array_insert(cardQueue, 0, cardQueue[_i])
 	array_delete(cardQueue, _i+1, 1)
@@ -94,16 +100,22 @@ function PrioritizeCard(_i) {
 		nextCard = cardQueue[0].cardAbove
 	}
 				
-	array_foreach(cardQueue, function(_element, _index){
-		_element.depth = _index - instance_number(Obj_Card)
-	});
+	SetCardDepths()
 }
 
 function FindNearestTopCard(_card) {
 	// Create list of cards touching _card ordered by distance (Thanks instance_place_list)
 	var topCards = ds_list_create()
 	var numOfTopCards = instance_place_list(x, y, Obj_Card, topCards, true)
-	//if numOfTopCards <= 0 {return noone}
+	
+	// Take out cards that are stacked above it
+	var nextCard = _card.cardAbove
+	while (nextCard != noone) {
+		var index = ds_list_find_index(topCards, nextCard)
+		ds_list_delete(topCards, index)
+		nextCard = nextCard.cardAbove
+	}
+	numOfTopCards = ds_list_size(topCards)
 	
 	// Find the closest top card
 	for(var i = 0; i < numOfTopCards; i++) {
