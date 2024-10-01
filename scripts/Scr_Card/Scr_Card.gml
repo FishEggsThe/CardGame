@@ -91,6 +91,35 @@ function PrioritizeCard(_i) {
 	});
 }
 
+function FindNearestTopCard(_card) {
+	// Create list of cards touching _card ordered by distance (Thanks instance_place_list)
+	var topCards = ds_list_create()
+	var numOfTopCards = instance_place_list(x, y, Obj_Card, topCards, true)
+	//if numOfTopCards <= 0 {return noone}
+	
+	// Find the closest top card
+	for(var i = 0; i < numOfTopCards; i++) {
+		var nextTopCard = topCards[| i]
+		if nextTopCard.top {
+			return nextTopCard
+		}
+	}
+	return noone
+	
+	// Determine nearest top card
+	//var nearest = topCards[| 0]
+	//var nearestDist = point_distance(x, y, nearest.x, nearest.y)
+	//for(var i = 1; i < numOfTopCards; i++) {
+	//	var nextDist = distance_to_object(topCards[| i])
+	//	if nextDist < nearestDist {
+	//		nearest = topCards[| i]
+	//		nearestDist = nextDist
+	//	}
+	//}
+	
+	//return nearest
+}
+
 function DebugPrintDeck(_deck) {
 	array_foreach(_deck, function(_element, _index){
 		show_debug_message(string(_index) + ": " + string(_element))

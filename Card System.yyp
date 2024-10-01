@@ -36,7 +36,7 @@
   "resources":[
     {"id":{"name":"Obj_Card","path":"objects/Obj_Card/Obj_Card.yy",},},
     {"id":{"name":"Obj_CardPriorityCheck","path":"objects/Obj_CardPriorityCheck/Obj_CardPriorityCheck.yy",},},
-    {"id":{"name":"Obj_CardStack","path":"objects/Obj_CardStack/Obj_CardStack.yy",},},
+    {"id":{"name":"Obj_Deck","path":"objects/Obj_Deck/Obj_Deck.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
     {"id":{"name":"Scr_Card","path":"scripts/Scr_Card/Scr_Card.yy",},},
     {"id":{"name":"chives","path":"sprites/chives/chives.yy",},},

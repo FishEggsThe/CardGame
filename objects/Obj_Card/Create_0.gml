@@ -4,5 +4,5 @@ oMouseX = mouse_x
 oMouseY = mouse_y
 held = false
 stackedOn = noone
-top = false
+top = true
 mask_index = Msk_Card
