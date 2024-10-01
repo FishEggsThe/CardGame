@@ -13,12 +13,14 @@ if held {
 		
 		var cardUnder = FindNearestTopCard(id)
 		if (cardUnder != noone && cardUnder.cardAbove == noone) {
-			// Card below placed card
-			cardUnder.cardAbove = id
+			if cardUnder.cardBelow != id {
+				// Card below placed card
+				cardUnder.cardAbove = id
 			
-			// Card on top
-			cardAbove = noone
-			cardBelow = cardUnder
+				// Card on top
+				cardAbove = noone
+				cardBelow = cardUnder
+			}
 			
 			// Positioning placed card over cardUnder nicely
 			x = cardUnder.x

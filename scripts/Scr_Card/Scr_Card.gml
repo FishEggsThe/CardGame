@@ -85,6 +85,14 @@ function ShuffleDeck(_deck) {
 function PrioritizeCard(_i) {
 	array_insert(cardQueue, 0, cardQueue[_i])
 	array_delete(cardQueue, _i+1, 1)
+	
+	var nextCard = cardQueue[0].cardAbove
+	while (nextCard != noone) {
+		var nextI = array_get_index(cardQueue, nextCard)
+		array_insert(cardQueue, 0, cardQueue[nextI])
+		array_delete(cardQueue, nextI+1, 1)
+		nextCard = cardQueue[0].cardAbove
+	}
 				
 	array_foreach(cardQueue, function(_element, _index){
 		_element.depth = _index - instance_number(Obj_Card)
