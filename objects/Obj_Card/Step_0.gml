@@ -14,6 +14,7 @@ if held {
 		var cardUnder = instance_place(x, y, Obj_Card)
 		if (cardUnder != noone && cardUnder.top) {
 			cardUnder.top = false; top = true
+			stackedOn = cardUnder
 			
 		}
 	}
