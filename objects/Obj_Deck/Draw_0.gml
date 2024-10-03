@@ -17,7 +17,9 @@ if currDeckSize > 0 {
 if Obj_Control.debug {
 	draw_set_color(c_white)
 	draw_set_halign(fa_left)
-	draw_text(5, 15, deck)
+	draw_text(5, 25, deck)
+	var scale = array_length(deck) - 1
+	var scaleText = string(cardHeight) + " + " + string(heightPixelPercent) + " * " + string(scale) + " = " + string(image_yscale)
+	draw_text(5, 45, scaleText)
+	draw_self()
 }
-
-draw_self()
