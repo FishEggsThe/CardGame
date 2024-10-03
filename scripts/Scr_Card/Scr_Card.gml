@@ -70,6 +70,16 @@ function CreateDeck(_shuffle = true) {
 	return deck
 }
 
+function AddToDeck(_card, _deck) {
+	if _card.cardAbove != noone {exit}
+	
+	_card.cardInfo.front = -1
+	array_insert(_deck, 0, _card.cardInfo)
+	array_delete(Obj_CardPriorityCheck.cardQueue, 0, 1)
+	instance_destroy(_card)
+	return _deck
+}
+
 function ShuffleDeck(_deck) {
 	var deckSize = array_length(_deck)
 	var shuffledDeck = []

@@ -14,3 +14,4 @@ stackOrder = function(cardA, cardB) {
 	return (numCheck && symbolCheck)
 }
 freePlace = true
+placeInDeck = true

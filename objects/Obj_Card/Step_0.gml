@@ -26,6 +26,8 @@ if held {
 			}
 		} else if !Obj_Control.freePlace {
 			PlaceCard(oX, oY, id, false)
+		} else if (Obj_Control.placeInDeck && place_meeting(x, y, Obj_Deck)) {
+			Obj_Deck.deck = AddToDeck(id, Obj_Deck.deck)
 		}
 	}
 }
