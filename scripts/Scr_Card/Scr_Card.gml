@@ -13,7 +13,7 @@ function Card(_symbol, _number) constructor {
 	front = -1
 	side = -1
 	
-	static DrawCard = function(_x, _y, outlineColor = c_maroon) {
+	static DrawCard = function(_x, _y, outlineColor = c_black) {
 		var height = 200; var width = height*2.25/3.5
 		var halfHeight = height/2; var halfWidth = width/2
 		var cardColor = [c_red, c_black]; var border = 5
