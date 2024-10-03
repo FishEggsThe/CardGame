@@ -20,6 +20,8 @@ if mouse_check_button_pressed(mb_left) {
 			break
 		}
 	}
+	
+	// Things other than a card
 	if !cardPicked {
 		with Obj_Deck {
 			if position_meeting(mouse_x, mouse_y, id) {
@@ -31,6 +33,35 @@ if mouse_check_button_pressed(mb_left) {
 					}
 				}
 			}
+		}
+	}
+} else if mouse_check_button_released(mb_left) {
+	with Obj_Card {
+		held = false
+		
+		var cardUnder = FindNearestTopCard(id)
+		if (cardUnder != noone && cardUnder.cardAbove == noone) {
+			var canStack = true
+			if Obj_Control.stackHasOrder {
+				if !Obj_Control.stackOrder(cardInfo, cardUnder.cardInfo) {canStack = false}
+			}
+			
+			if canStack {
+				// Card below placed card
+				cardUnder.cardAbove = id
+			
+				// Card on top
+				//cardAbove = noone
+				cardBelow = cardUnder
+			
+				// Positioning placed card over cardUnder nicely
+				PlaceCard(cardUnder.x, cardUnder.y, id, true)
+			}
+		} else if !Obj_Control.freePlace {
+			PlaceCard(oX, oY, id, false)
+		} else if (Obj_Control.placeInDeck && place_meeting(x, y, Obj_Deck)) {
+			var nearestDeck = instance_nearest(x, y, Obj_Deck)
+			Obj_Deck.deck = AddToDeck(id, Obj_Deck.deck)
 		}
 	}
 }
