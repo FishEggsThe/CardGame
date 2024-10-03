@@ -1,9 +1,13 @@
-if mouse_check_button_pressed(mb_left) {
-	if heldCard == noone {
+var pressedInput = mouse_check_button_pressed(mb_left)
+var releasedInput = mouse_check_button_released(mb_left)
+var setAlarm = 6
+
+if pressedInput+releasedInput {
+	if (pressedInput && heldCard == noone) {
 		var cardPicked = false
 		for(var i = 0; i < array_length(cardQueue); i++) {
 			if position_meeting(mouse_x, mouse_y, cardQueue[i]) {
-				cardPicked = true
+				cardPicked = true; alarm[0] = setAlarm
 				// Hold selected card
 				with cardQueue[i] {
 					if cardBelow != noone {
@@ -37,7 +41,8 @@ if mouse_check_button_pressed(mb_left) {
 				}
 			}
 		}
-	} else if heldCard != noone {
+	} else if (alarm[0] <= 0 && heldCard != noone) {
+		//alarm[0] = setAlarm
 		with heldCard {
 			held = false
 		
