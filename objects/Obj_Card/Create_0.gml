@@ -7,4 +7,4 @@ cardAbove = noone
 cardBelow = noone
 mask_index = Msk_Card
 
-xOffset = 5; yOffset = 50
+//xOffset = 5; yOffset = 50

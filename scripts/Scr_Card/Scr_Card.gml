@@ -113,7 +113,22 @@ function PrioritizeCard(_i) {
 	SetCardDepths()
 }
 
+function PlaceCard(_x, _y, _card, _onCard) {
+	var xOffset = 5; var yOffset = 50
+	x = _x + (xOffset*_onCard)
+	y = _y + (yOffset*_onCard)
+	var nextCard = _card.cardAbove
+	while (nextCard != noone) {
+		nextCard.x = nextCard.cardBelow.x + xOffset
+		nextCard.y = nextCard.cardBelow.y + yOffset
+		nextCard = nextCard.cardAbove
+	}
+}
+
 function FindNearestTopCard(_card) {
+	// Returns noone if stacking is not allowed
+	if !Obj_Control.stackable {return noone}
+	
 	// Create list of cards touching _card ordered by distance (Thanks instance_place_list)
 	var topCards = ds_list_create()
 	var numOfTopCards = instance_place_list(x, y, Obj_Card, topCards, true)

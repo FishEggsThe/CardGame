@@ -4,3 +4,11 @@ if instance_number(Obj_Control) > 1 {
 }
 
 debug = false
+
+// Game rules
+stackable = true
+stackHasOrder = true
+stackOrder = function(cardA, cardB) {
+	return cardA.number > cardB.number
+}
+freePlace = true
