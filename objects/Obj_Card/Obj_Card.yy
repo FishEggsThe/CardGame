@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"Msk_Card",
+    "path":"sprites/Msk_Card/Msk_Card.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

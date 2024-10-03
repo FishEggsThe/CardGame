@@ -42,6 +42,7 @@
     {"id":{"name":"Scr_Card","path":"scripts/Scr_Card/Scr_Card.yy",},},
     {"id":{"name":"chives","path":"sprites/chives/chives.yy",},},
     {"id":{"name":"Msk_Card","path":"sprites/Msk_Card/Msk_Card.yy",},},
+    {"id":{"name":"Msk_Deck","path":"sprites/Msk_Deck/Msk_Deck.yy",},},
   ],
   "resourceType":"GMProject",
   "resourceVersion":"2.0",

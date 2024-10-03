@@ -31,7 +31,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"Msk_Deck",
+    "path":"sprites/Msk_Deck/Msk_Deck.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
