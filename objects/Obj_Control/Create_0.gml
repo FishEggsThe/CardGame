@@ -9,6 +9,8 @@ debug = false
 stackable = true
 stackHasOrder = true
 stackOrder = function(cardA, cardB) {
-	return cardA.number > cardB.number
+	var numCheck = cardA.number+1 == cardB.number
+	var symbolCheck = cardA.symbolNum%2 != cardB.symbolNum%2
+	return (numCheck && symbolCheck)
 }
 freePlace = true

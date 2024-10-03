@@ -10,7 +10,7 @@ if held {
 		if (cardUnder != noone && cardUnder.cardAbove == noone) {
 			var canStack = true
 			if Obj_Control.stackHasOrder {
-				if Obj_Control.stackOrder(cardInfo, cardUnder.cardInfo) {canStack = false}
+				if !Obj_Control.stackOrder(cardInfo, cardUnder.cardInfo) {canStack = false}
 			}
 			
 			if canStack {
