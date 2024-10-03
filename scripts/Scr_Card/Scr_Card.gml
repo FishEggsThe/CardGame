@@ -13,13 +13,13 @@ function Card(_symbol, _number) constructor {
 	front = -1
 	side = -1
 	
-	static DrawCard = function(_x, _y) {
+	static DrawCard = function(_x, _y, outlineColor = c_maroon) {
 		var height = 200; var width = height*2.25/3.5
 		var halfHeight = height/2; var halfWidth = width/2
 		var cardColor = [c_red, c_black]; var border = 5
 		var backColor = c_maroon
 		
-		//if keyboard_check_pressed(vk_space) {FlipCard()}
+		if keyboard_check_pressed(vk_space) {FlipCard()}
 		side = lerp(side, front, 0.3)
 		
 		if side >= 0 {
@@ -38,6 +38,8 @@ function Card(_symbol, _number) constructor {
 			draw_set_color(backColor)
 			draw_roundrect(_x-halfWidth*side, _y-halfHeight, _x+halfWidth*side, _y+halfHeight, false)
 		}
+		draw_set_color(outlineColor)
+		draw_roundrect(_x-halfWidth*side, _y-halfHeight, _x+halfWidth*side, _y+halfHeight, true)
 	}
 	static FlipCard = function() {
 		front *= -1
