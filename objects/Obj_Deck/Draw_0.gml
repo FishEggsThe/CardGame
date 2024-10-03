@@ -1,14 +1,10 @@
-var deckSize = array_length(deck)
-if deckSize > 0 {
-	for(var i = deckSize-1; i >= 0; i--) {
-		var outlineColor = (i%2 == 0 ? c_black : c_maroon)
-		deck[i].DrawCard(x, y-deckSize+i+1, outlineColor)
+var currDeckSize = array_length(deck)
+if currDeckSize > 0 {
+	for(var i = currDeckSize-1; i >= 0; i--) {
+		var cardInDeckNum = i + (currDeckSize%2 == 1)
+		var outlineColor = (cardInDeckNum%2 == 0 || i == 0 ? c_black : c_maroon)
+		deck[i].DrawCard(x, y-currDeckSize+i+1, outlineColor)
 	}
-	//array_foreach(deck, function(_element, _index) {
-	//	var outlineColor = (_index%2 == 0 ? c_black : c_maroon)
-	//	_element.DrawCard(x, y-_index, outlineColor)
-	//});
-	//deck[0].DrawCard(x, y)
 } else {
 	var height = 200; var width = height*2.25/3.5; var border = 5
 	var halfHeight = height/2; var halfWidth = width/2
