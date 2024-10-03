@@ -11,6 +11,7 @@ if mouse_check_button_pressed(mb_left) {
 				}
 				oX = x; oY = y; held = true
 				oMouseX = mouse_x; oMouseY = mouse_y
+				Obj_CardPriorityCheck.heldCard = id
 			}
 			
 			// Shift priority list
@@ -36,15 +37,14 @@ if mouse_check_button_pressed(mb_left) {
 		}
 	}
 } else if mouse_check_button_released(mb_left) {
-	with Obj_Card {
+	with heldCard {
 		held = false
+		Obj_Control.heldCard = noone
 		
 		var cardUnder = FindNearestTopCard(id)
 		if (cardUnder != noone && cardUnder.cardAbove == noone) {
 			var canStack = true
-			if Obj_Control.stackHasOrder {
-				if !Obj_Control.stackOrder(cardInfo, cardUnder.cardInfo) {canStack = false}
-			}
+			if !Obj_Control.stackOrder(cardInfo, cardUnder.cardInfo) {canStack = false}
 			
 			if canStack {
 				// Card below placed card

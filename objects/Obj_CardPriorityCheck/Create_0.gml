@@ -1,1 +1,2 @@
 cardQueue = []
+heldCard = noone
