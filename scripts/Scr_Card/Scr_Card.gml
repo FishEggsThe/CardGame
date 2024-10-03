@@ -71,7 +71,7 @@ function CreateDeck(_shuffle = true) {
 }
 
 function AddToDeck(_card, _deck) {
-	if _card.cardAbove != noone {exit}
+	if _card.cardAbove != noone {return _deck}
 	
 	_card.cardInfo.front = -1
 	array_insert(_deck, 0, _card.cardInfo)
