@@ -53,6 +53,19 @@ function CreateCard(_symbol, _number, _x = x, _y = y) {
 		cardInfo.FlipCard()
 	}
 	array_insert(Obj_CardPriorityCheck.cardQueue, 0, card)
+	return card
+}
+
+function PlaceCard(_x, _y, _card, _onCard) {
+	var xOffset = 5; var yOffset = 50
+	_card.gotoX = _x + (xOffset*_onCard)
+	_card.gotoY = _y + (yOffset*_onCard)
+	var nextCard = _card.cardAbove
+	while (nextCard != noone) {
+		nextCard.gotoX = nextCard.cardBelow.gotoX + xOffset
+		nextCard.gotoY = nextCard.cardBelow.gotoY + yOffset
+		nextCard = nextCard.cardAbove
+	}
 }
 
 function CreateDeck(_shuffle = true) {
@@ -123,18 +136,6 @@ function PrioritizeCard(_i) {
 	});
 				
 	SetCardDepths()
-}
-
-function PlaceCard(_x, _y, _card, _onCard) {
-	var xOffset = 5; var yOffset = 50
-	gotoX = _x + (xOffset*_onCard)
-	gotoY = _y + (yOffset*_onCard)
-	var nextCard = _card.cardAbove
-	while (nextCard != noone) {
-		nextCard.gotoX = nextCard.cardBelow.gotoX + xOffset
-		nextCard.gotoY = nextCard.cardBelow.gotoY + yOffset
-		nextCard = nextCard.cardAbove
-	}
 }
 
 function FindNearestTopCard(_card) {
