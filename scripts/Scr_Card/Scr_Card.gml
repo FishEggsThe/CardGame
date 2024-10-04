@@ -127,12 +127,12 @@ function PrioritizeCard(_i) {
 
 function PlaceCard(_x, _y, _card, _onCard) {
 	var xOffset = 5; var yOffset = 50
-	x = _x + (xOffset*_onCard)
-	y = _y + (yOffset*_onCard)
+	gotoX = _x + (xOffset*_onCard)
+	gotoY = _y + (yOffset*_onCard)
 	var nextCard = _card.cardAbove
 	while (nextCard != noone) {
-		nextCard.x = nextCard.cardBelow.x + xOffset
-		nextCard.y = nextCard.cardBelow.y + yOffset
+		nextCard.gotoX = nextCard.cardBelow.gotoX + xOffset
+		nextCard.gotoY = nextCard.cardBelow.gotoY + yOffset
 		nextCard = nextCard.cardAbove
 	}
 }
