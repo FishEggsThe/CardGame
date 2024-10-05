@@ -7,11 +7,7 @@ if currDeckSize > 0 {
 		deck[i].DrawCard(x, trueY-currDeckSize+i+1, outlineColor)
 	}
 } else {
-	var height = 200; var width = height*2.25/3.5; var border = 5
-	var halfHeight = height/2; var halfWidth = width/2
-	draw_set_color(c_black)
-	draw_roundrect(x-halfWidth+border, trueY-halfHeight+border, 
-				   x+halfWidth-border, trueY+halfHeight-border, true)
+	DrawNoCard(x, trueY)
 }
 
 if Obj_Control.debug {

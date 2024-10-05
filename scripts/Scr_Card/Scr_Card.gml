@@ -168,6 +168,14 @@ function FindNearestTopCard(_card) {
 	return chosenTopCard
 }
 
+function DrawNoCard(_x, _y) {
+	var height = 200; var width = height*2.25/3.5; var border = 5
+	var halfHeight = height/2; var halfWidth = width/2
+	draw_set_color(c_black)
+	draw_roundrect(_x-halfWidth+border, _y-halfHeight+border, 
+				   _x+halfWidth-border, _y+halfHeight-border, true)
+}
+
 function DebugPrintDeck(_deck) {
 	array_foreach(_deck, function(_element, _index){
 		show_debug_message(string(_index) + ": " + string(_element))
