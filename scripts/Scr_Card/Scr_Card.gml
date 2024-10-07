@@ -46,11 +46,13 @@ function Card(_symbol, _number) constructor {
 	}
 }
 
-function CreateCard(_symbol, _number, _x = x, _y = y) {
+function CreateCard(_symbol, _number, _x = x, _y = y, _front = -1) {
 	var card = instance_create_depth(_x, _y, -instance_number(Obj_Card), Obj_Card)
 	with card {
 		cardInfo = new Card(_symbol, _number)
-		cardInfo.FlipCard()
+		cardInfo.side = _front
+		cardInfo.front = _front
+		if _front == -1 {cardInfo.FlipCard()}
 	}
 	array_insert(Obj_CardPriorityCheck.cardQueue, 0, card)
 	return card

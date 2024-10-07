@@ -48,7 +48,13 @@ if pressedInput+releasedInput {
 			} else if position_meeting(mouse_x, mouse_y, Obj_Pile) {
 				var nearestPile = instance_nearest(mouse_x, mouse_y, Obj_Pile)
 				with nearestPile {
-					
+					var card = CreateCard(pile[0].symbol, pile[0].number, x, y-sprite_get_height(Msk_Deck)/2, 1)
+					with card {
+						oX = x; oY = y; held = true
+						oMouseX = mouse_x; oMouseY = mouse_y
+						Obj_CardPriorityCheck.heldCard = id
+					}
+					array_delete(pile, 0, 1)
 				}
 			}
 		}
