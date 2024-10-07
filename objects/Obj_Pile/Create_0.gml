@@ -1,2 +1,1 @@
 pile = []
-pileSize = 1

@@ -58,8 +58,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Rm_Debug","path":"rooms/Rm_Debug/Rm_Debug.yy",},},
     {"roomId":{"name":"Rm_Menu","path":"rooms/Rm_Menu/Rm_Menu.yy",},},
+    {"roomId":{"name":"Rm_Debug","path":"rooms/Rm_Debug/Rm_Debug.yy",},},
     {"roomId":{"name":"Rm_Pickup","path":"rooms/Rm_Pickup/Rm_Pickup.yy",},},
     {"roomId":{"name":"Rm_Solitaire","path":"rooms/Rm_Solitaire/Rm_Solitaire.yy",},},
   ],

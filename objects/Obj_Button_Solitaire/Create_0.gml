@@ -11,9 +11,21 @@ onClick = function() {
 	}
 	
 	var start = function() {
+		var width = sprite_get_width(Msk_Deck)
 		with instance_create_layer(0, 0, "Instances", Obj_Deck) {
-			x += sprite_get_width(Msk_Deck) + 50
+			x += width + 50
 			y += cardHeight + 70
+		}
+		
+		for(var i = 0; i < 7; i++) {
+			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
+				x += (i+2)*width + 50
+				y += Obj_Deck.cardHeight*3/2 + 70
+				stackRule = function(_card) {
+					if _card.number == 13 {return true}
+					return false
+				}
+			}
 		}
 	}
 	
