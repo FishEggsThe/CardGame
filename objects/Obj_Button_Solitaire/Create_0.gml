@@ -19,14 +19,11 @@ onClick = function() {
 		
 		for(var i = 0; i < 7; i++) {
 			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
-				x += (i+2)*width + 50
-				y += Obj_Deck.cardHeight*3/2 + 70
-				//stackRule = function(_card) {
-				//	if _card.number == 13 {return true}
-				//	return false
-				//}
+				x += width + i*width*1.1 + 50
+				y += Obj_Deck.cardHeight*3/2 + 80
 				stackRule = function(_card) {
-					return true
+					if _card.number == 13 {return true}
+					return false
 				}
 			}
 		}

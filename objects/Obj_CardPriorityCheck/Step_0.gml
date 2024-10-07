@@ -68,6 +68,9 @@ if pressedInput+releasedInput {
 	} else if (alarm[0] <= 0 && heldCard != noone) {
 		//alarm[0] = setAlarm
 		with heldCard {
+			if !Obj_Control.freePlace {
+				PlaceCard(oX, oY, id, false)
+			}
 			held = false
 		
 			var cardUnder = FindNearestTopCard(id)
@@ -103,8 +106,6 @@ if pressedInput+releasedInput {
 						PlaceCard(nearestHolder.x, nearestHolder.y, id, false)
 					}
 				}
-			} else if !Obj_Control.freePlace {
-				PlaceCard(oX, oY, id, false)
 			}
 		}
 		heldCard = noone
