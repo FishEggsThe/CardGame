@@ -1,19 +1,20 @@
 {
   "$GMObject":"",
-  "%Name":"Obj_Button",
+  "%Name":"Obj_Button_GoBack",
   "eventList":[
     {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":0,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":3,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
-    {"$GMEvent":"v1","%Name":"","collisionObjectId":null,"eventNum":0,"eventType":8,"isDnD":false,"name":"","resourceType":"GMEvent","resourceVersion":"2.0",},
   ],
   "managed":true,
-  "name":"Obj_Button",
+  "name":"Obj_Button_GoBack",
   "overriddenProperties":[],
   "parent":{
     "name":"Buttons",
     "path":"folders/Objects/Buttons.yy",
   },
-  "parentObjectId":null,
+  "parentObjectId":{
+    "name":"Obj_Button",
+    "path":"objects/Obj_Button/Obj_Button.yy",
+  },
   "persistent":false,
   "physicsAngularDamping":0.1,
   "physicsDensity":0.5,
@@ -31,10 +32,7 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":{
-    "name":"Msk_Card",
-    "path":"sprites/Msk_Card/Msk_Card.yy",
-  },
+  "spriteId":null,
   "spriteMaskId":null,
   "visible":true,
 }
