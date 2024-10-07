@@ -1,0 +1,1 @@
+DrawNoCard(x, y)

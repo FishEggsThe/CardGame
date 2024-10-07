@@ -1,1 +1,2 @@
 pile = []
+pileSize = 1

@@ -3,6 +3,7 @@ var releasedInput = mouse_check_button_released(mb_left)
 var setAlarm = 8
 
 if pressedInput+releasedInput {
+	// Taking card
 	if (pressedInput && heldCard == noone) {
 		var cardPicked = false
 		for(var i = 0; i < array_length(cardQueue); i++) {
@@ -11,6 +12,9 @@ if pressedInput+releasedInput {
 				// Hold selected card
 				with cardQueue[i] {
 					if cardBelow != noone {
+						if cardBelow.object_index == Obj_CardHolder {
+							cardBelow.heldCard = noone
+						}
 						cardBelow.cardAbove = noone
 						cardBelow = noone
 					}
@@ -60,6 +64,7 @@ if pressedInput+releasedInput {
 				alarm[0] = setAlarm
 			}
 		}
+	// Placing card
 	} else if (alarm[0] <= 0 && heldCard != noone) {
 		//alarm[0] = setAlarm
 		with heldCard {
@@ -90,6 +95,15 @@ if pressedInput+releasedInput {
 				var nearestPile = instance_nearest(x, y, Obj_Pile)
 				if (array_length(nearestPile.pile) <= 0 || Obj_Control.stackOrder(id.cardInfo, nearestPile.pile[0])) {
 					nearestPile.pile = AddToPile(id, nearestPile.pile)
+				}
+			} else if place_meeting(x, y, Obj_CardHolder) {
+				var nearestHolder = instance_nearest(x, y, Obj_CardHolder)
+				if nearestHolder.heldCard == noone {
+					if nearestHolder.stackRule(cardInfo) {
+						nearestHolder.heldCard = id
+						cardBelow = nearestHolder
+						PlaceCard(nearestHolder.x, nearestHolder.y, id, false)
+					}
 				}
 			}
 		}

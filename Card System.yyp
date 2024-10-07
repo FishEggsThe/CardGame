@@ -40,6 +40,7 @@
     {"id":{"name":"Obj_Button_Solitaire","path":"objects/Obj_Button_Solitaire/Obj_Button_Solitaire.yy",},},
     {"id":{"name":"Obj_Button","path":"objects/Obj_Button/Obj_Button.yy",},},
     {"id":{"name":"Obj_Card","path":"objects/Obj_Card/Obj_Card.yy",},},
+    {"id":{"name":"Obj_CardHolder","path":"objects/Obj_CardHolder/Obj_CardHolder.yy",},},
     {"id":{"name":"Obj_CardPriorityCheck","path":"objects/Obj_CardPriorityCheck/Obj_CardPriorityCheck.yy",},},
     {"id":{"name":"Obj_Control","path":"objects/Obj_Control/Obj_Control.yy",},},
     {"id":{"name":"Obj_Deck","path":"objects/Obj_Deck/Obj_Deck.yy",},},
@@ -57,8 +58,8 @@
   "resourceType":"GMProject",
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
-    {"roomId":{"name":"Rm_Menu","path":"rooms/Rm_Menu/Rm_Menu.yy",},},
     {"roomId":{"name":"Rm_Debug","path":"rooms/Rm_Debug/Rm_Debug.yy",},},
+    {"roomId":{"name":"Rm_Menu","path":"rooms/Rm_Menu/Rm_Menu.yy",},},
     {"roomId":{"name":"Rm_Pickup","path":"rooms/Rm_Pickup/Rm_Pickup.yy",},},
     {"roomId":{"name":"Rm_Solitaire","path":"rooms/Rm_Solitaire/Rm_Solitaire.yy",},},
   ],

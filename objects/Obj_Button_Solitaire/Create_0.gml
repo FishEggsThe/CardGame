@@ -7,12 +7,13 @@ onClick = function() {
 				return false
 			}
 		}
+		return true
 	}
 	
 	var start = function() {
 		with instance_create_layer(0, 0, "Instances", Obj_Deck) {
-			x += sprite_get_width(Msk_Deck) + 5
-			y += cardHeight + 5
+			x += sprite_get_width(Msk_Deck) + 50
+			y += cardHeight + 70
 		}
 	}
 	

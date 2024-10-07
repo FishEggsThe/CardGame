@@ -59,7 +59,7 @@ function CreateCard(_symbol, _number, _x = x, _y = y, _front = -1) {
 }
 
 function PlaceCard(_x, _y, _card, _onCard) {
-	var xOffset = 5; var yOffset = 50
+	var xOffset = 2; var yOffset = 30
 	_card.gotoX = _x + (xOffset*_onCard)
 	_card.gotoY = _y + (yOffset*_onCard)
 	var nextCard = _card.cardAbove
