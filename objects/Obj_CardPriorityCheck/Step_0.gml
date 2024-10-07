@@ -55,7 +55,9 @@ if pressedInput+releasedInput {
 						Obj_CardPriorityCheck.heldCard = id
 					}
 					array_delete(pile, 0, 1)
+					with Obj_CardPriorityCheck {SetCardDepths()}
 				}
+				alarm[0] = setAlarm
 			}
 		}
 	} else if (alarm[0] <= 0 && heldCard != noone) {
