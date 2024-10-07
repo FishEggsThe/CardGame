@@ -1,14 +1,11 @@
-function GameRules(_stack, _freePlace, _placeInDeck, _hasOrder, _order = function() {show_debug_message("If you see this message, that means that this message has breached containment")}) constructor {
+function GameRules(_stack, _freePlace, _placeInDeck, _hasOrder, _win, _order = function(cardA, cardB) {return true}) constructor {
 	// Game rules
-	stackable = true
-	stackHasOrder = true
-	stackOrder = function(cardA, cardB) {
-		var numCheck = cardA.number+1 == cardB.number
-		var symbolCheck = cardA.symbolNum%2 != cardB.symbolNum%2
-		return (numCheck && symbolCheck)
-	}
-	freePlace = true
-	placeInDeck = true
+	stackable = _stack
+	stackHasOrder = _order
+	stackOrder = _order
+	freePlace = _freePlace
+	placeInDeck = _placeInDeck
+	winCondition = _win
 }
 
 function ApplyGameRules(_gamerules) {
@@ -19,4 +16,5 @@ function ApplyGameRules(_gamerules) {
 		freePlace = _gamerules.freePlace
 		placeInDeck = _gamerules.placeInDeck
 		}
+		winCondition = _gamerules.winCondition
 }

@@ -16,3 +16,6 @@ stackOrder = function(cardA, cardB) {
 }
 freePlace = true
 placeInDeck = true
+winCondition = function() {
+	if !instance_exists(Obj_Card) {return true}
+}
