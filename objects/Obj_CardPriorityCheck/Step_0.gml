@@ -80,9 +80,7 @@ if pressedInput+releasedInput {
 				nearestDeck.deck = AddToDeck(id, nearestDeck.deck)
 			} else if place_meeting(x, y, Obj_Pile) {
 				var nearestPile = instance_nearest(x, y, Obj_Pile)
-				if array_length(nearestPile.pile) <= 0 {
-					nearestPile.pile = AddToPile(id, nearestPile.pile)
-				} else if Obj_Control.stackOrder(id, nearestPile.pile[0]){
+				if (array_length(nearestPile.pile) <= 0 || Obj_Control.stackOrder(id.cardInfo, nearestPile.pile[0])) {
 					nearestPile.pile = AddToPile(id, nearestPile.pile)
 				}
 			}
