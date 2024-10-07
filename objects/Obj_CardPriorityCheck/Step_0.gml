@@ -86,8 +86,6 @@ if pressedInput+releasedInput {
 					// Positioning placed card over cardUnder nicely
 					PlaceCard(cardUnder.x, cardUnder.y, id, true)
 				}
-			} else if !Obj_Control.freePlace {
-				PlaceCard(oX, oY, id, false)
 			} else if (Obj_Control.placeInDeck && place_meeting(x, y, Obj_Deck)) {
 				var nearestDeck = instance_nearest(x, y, Obj_Deck)
 				nearestDeck.deck = AddToDeck(id, nearestDeck.deck)
@@ -105,6 +103,8 @@ if pressedInput+releasedInput {
 						PlaceCard(nearestHolder.x, nearestHolder.y, id, false)
 					}
 				}
+			} else if !Obj_Control.freePlace {
+				PlaceCard(oX, oY, id, false)
 			}
 		}
 		heldCard = noone

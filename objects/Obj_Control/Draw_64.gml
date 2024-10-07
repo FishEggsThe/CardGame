@@ -3,5 +3,5 @@ if won {
 }
 
 if debug {
-	//draw_text(5, 60, "stackable: " + stackable)
+	draw_text(60, 60, instance_exists(Obj_CardPriorityCheck))
 }

@@ -25,6 +25,9 @@ onClick = function() {
 				//	if _card.number == 13 {return true}
 				//	return false
 				//}
+				stackRule = function(_card) {
+					return true
+				}
 			}
 		}
 	}
