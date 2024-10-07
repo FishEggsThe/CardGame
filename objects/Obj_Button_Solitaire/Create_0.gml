@@ -21,10 +21,10 @@ onClick = function() {
 			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
 				x += (i+2)*width + 50
 				y += Obj_Deck.cardHeight*3/2 + 70
-				stackRule = function(_card) {
-					if _card.number == 13 {return true}
-					return false
-				}
+				//stackRule = function(_card) {
+				//	if _card.number == 13 {return true}
+				//	return false
+				//}
 			}
 		}
 	}

@@ -98,7 +98,7 @@ function AddToDeck(_card, _deck) {
 }
 
 function AddToPile(_card, _pile) {
-	if (_card.cardAbove != noone) {return _deck}
+	if (_card.cardAbove != noone) {return _pile}
 	
 	_card.cardInfo.front = 1
 	array_insert(_pile, 0, _card.cardInfo)
