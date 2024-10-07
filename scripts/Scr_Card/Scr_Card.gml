@@ -95,6 +95,16 @@ function AddToDeck(_card, _deck) {
 	return _deck
 }
 
+function AddToPile(_card, _pile) {
+	if (_card.cardAbove != noone) {return _deck}
+	
+	_card.cardInfo.front = 1
+	array_insert(_pile, 0, _card.cardInfo)
+	array_delete(Obj_CardPriorityCheck.cardQueue, 0, 1)
+	instance_destroy(_card)
+	return _pile
+}
+
 function ShuffleDeck(_deck) {
 	var deckSize = array_length(_deck)
 	var shuffledDeck = []

@@ -29,8 +29,8 @@ if pressedInput+releasedInput {
 	
 		// Things other than a card
 		if !cardPicked {
-			with Obj_Deck {
-				if position_meeting(mouse_x, mouse_y, id) {
+			if position_meeting(mouse_x, mouse_y, Obj_Deck) {
+				with instance_nearest(mouse_x, mouse_y, Obj_Deck) {
 					if array_length(deck) > 0 {
 						if mouse_check_button_pressed(mb_left) {
 							var currDeckSize = array_length(deck)
@@ -44,6 +44,11 @@ if pressedInput+releasedInput {
 							with Obj_CardPriorityCheck {SetCardDepths()}
 						}
 					}
+				}
+			} else if position_meeting(mouse_x, mouse_y, Obj_Pile) {
+				var nearestPile = instance_nearest(mouse_x, mouse_y, Obj_Pile)
+				with nearestPile {
+					
 				}
 			}
 		}
@@ -72,7 +77,14 @@ if pressedInput+releasedInput {
 				PlaceCard(oX, oY, id, false)
 			} else if (Obj_Control.placeInDeck && place_meeting(x, y, Obj_Deck)) {
 				var nearestDeck = instance_nearest(x, y, Obj_Deck)
-				Obj_Deck.deck = AddToDeck(id, Obj_Deck.deck)
+				nearestDeck.deck = AddToDeck(id, nearestDeck.deck)
+			} else if place_meeting(x, y, Obj_Pile) {
+				var nearestPile = instance_nearest(x, y, Obj_Pile)
+				if array_length(nearestPile.pile) <= 0 {
+					nearestPile.pile = AddToPile(id, nearestPile.pile)
+				} else if Obj_Control.stackOrder(id, nearestPile.pile[0]){
+					nearestPile.pile = AddToPile(id, nearestPile.pile)
+				}
 			}
 		}
 		heldCard = noone
