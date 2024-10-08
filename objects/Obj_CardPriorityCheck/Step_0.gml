@@ -61,7 +61,6 @@ if pressedInput+releasedInput {
 				if Obj_CardPriorityCheck.lastCardBelow != noone {
 					cardBelow = Obj_CardPriorityCheck.lastCardBelow
 					cardBelow.cardAbove = id
-					Obj_CardPriorityCheck.lastCardBelow = noone
 				}
 			}
 			held = false
@@ -101,6 +100,11 @@ if pressedInput+releasedInput {
 				}
 			}
 		}
+		if lastCardBelow.cardAbove.cardBelow != lastCardBelow {
+			lastCardBelow.cardAbove = noone
+		}
+		
 		heldCard = noone
+		lastCardBelow = noone
 	}
 }
