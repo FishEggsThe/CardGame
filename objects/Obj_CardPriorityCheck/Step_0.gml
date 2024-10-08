@@ -8,6 +8,8 @@ if pressedInput+releasedInput {
 		var cardPicked = false
 		for(var i = 0; i < array_length(cardQueue); i++) {
 			if (position_meeting(mouse_x, mouse_y, cardQueue[i]) && cardQueue[i].cardInfo.front == 1) {
+				var possibleHolder = instance_position(mouse_x, mouse_y, Obj_CardHolder)
+				if possibleHolder != noone {possibleHolder.heldCard = noone}
 				cardPicked = true; alarm[0] = setAlarm
 				lastCardBelow = cardQueue[i].cardBelow
 				// Hold selected card
@@ -67,6 +69,7 @@ if pressedInput+releasedInput {
 		
 			var cardUnder = FindNearestTopCard(id)
 			if (cardUnder != noone && cardUnder.cardAbove == noone) {
+				show_debug_message("cardUnder")
 				var canStack = true
 				if !Obj_Control.stackOrder(cardInfo, cardUnder.cardInfo) {canStack = false}
 			
@@ -82,17 +85,22 @@ if pressedInput+releasedInput {
 					PlaceCard(cardUnder.x, cardUnder.y, id, true)
 				}
 			} else if (Obj_Control.placeInDeck && place_meeting(x, y, Obj_Deck)) {
+				show_debug_message("Deck")
 				var nearestDeck = instance_nearest(x, y, Obj_Deck)
 				nearestDeck.deck = AddToDeck(id, nearestDeck.deck)
 			} else if place_meeting(x, y, Obj_Pile) {
+				show_debug_message("Pile")
 				var nearestPile = instance_nearest(x, y, Obj_Pile)
-				if nearestPile.pileRule(id.cardInfo) {
+				if nearestPile.pileRule(cardInfo) {
 					nearestPile.pile = AddToPile(id, nearestPile.pile)
 				}
 			} else if place_meeting(x, y, Obj_CardHolder) {
+				show_debug_message("1. Holder")
 				var nearestHolder = instance_nearest(x, y, Obj_CardHolder)
 				if nearestHolder.heldCard == noone {
-					if nearestHolder.stackRule(cardInfo) {
+					show_debug_message("2. Holder - " + string(cardInfo.number))
+					if nearestHolder.holderRule(cardInfo) {
+						show_debug_message("3. Holder")
 						nearestHolder.heldCard = id
 						cardBelow = nearestHolder
 						PlaceCard(nearestHolder.x, nearestHolder.y, id, false)

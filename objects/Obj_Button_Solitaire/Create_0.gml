@@ -23,9 +23,8 @@ onClick = function() {
 			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
 				x += width + (i+1)*width*1.1 + 50
 				y += Obj_Deck.cardHeight*3/2*1.1 + 80
-				stackRule = function(_card) {
-					if _card.number == 13 {return true}
-					return false
+				holderRule = function(_card) {
+					return _card.number == 13
 				}
 				
 				var card = DrawFromDeck(deck, x, y, -1)
