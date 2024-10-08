@@ -9,6 +9,7 @@ if pressedInput+releasedInput {
 		for(var i = 0; i < array_length(cardQueue); i++) {
 			if (position_meeting(mouse_x, mouse_y, cardQueue[i]) && cardQueue[i].cardInfo.front == 1) {
 				cardPicked = true; alarm[0] = setAlarm
+				lastCardBelow = cardQueue[i].cardBelow
 				// Hold selected card
 				with cardQueue[i] {
 					if cardBelow != noone {
@@ -57,6 +58,11 @@ if pressedInput+releasedInput {
 		with heldCard {
 			if !Obj_Control.freePlace {
 				PlaceCard(oX, oY, id, false)
+				if Obj_CardPriorityCheck.lastCardBelow != noone {
+					cardBelow = Obj_CardPriorityCheck.lastCardBelow
+					cardBelow.cardAbove = id
+					Obj_CardPriorityCheck.lastCardBelow = noone
+				}
 			}
 			held = false
 		
