@@ -86,7 +86,7 @@ if pressedInput+releasedInput {
 				nearestDeck.deck = AddToDeck(id, nearestDeck.deck)
 			} else if place_meeting(x, y, Obj_Pile) {
 				var nearestPile = instance_nearest(x, y, Obj_Pile)
-				if (array_length(nearestPile.pile) <= 0 || Obj_Control.stackOrder(id.cardInfo, nearestPile.pile[0])) {
+				if nearestPile.pileRule(id.cardInfo) {
 					nearestPile.pile = AddToPile(id, nearestPile.pile)
 				}
 			} else if place_meeting(x, y, Obj_CardHolder) {
@@ -100,8 +100,10 @@ if pressedInput+releasedInput {
 				}
 			}
 		}
-		if lastCardBelow.cardAbove.cardBelow != lastCardBelow {
-			lastCardBelow.cardAbove = noone
+		if lastCardBelow != noone {
+			if (!instance_exists(lastCardBelow.cardAbove) || lastCardBelow.cardAbove.cardBelow != lastCardBelow) {
+				lastCardBelow.cardAbove = noone
+			}
 		}
 		
 		heldCard = noone

@@ -21,8 +21,8 @@ onClick = function() {
 		var numOfExtraCards = 0
 		for(var i = 0; i < 7; i++) {
 			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
-				x += width + i*width*1.1 + 50
-				y += Obj_Deck.cardHeight*3/2 + 80
+				x += width + (i+1)*width*1.1 + 50
+				y += Obj_Deck.cardHeight*3/2*1.1 + 80
 				stackRule = function(_card) {
 					if _card.number == 13 {return true}
 					return false
@@ -39,6 +39,23 @@ onClick = function() {
 				PlaceCard(x, y, heldCard, false)
 			}
 			numOfExtraCards++
+		}
+		
+		for(var i = 0; i < 4; i++) {
+			with instance_create_layer(0, 0, "Instances", Obj_Pile) {
+				x += width + (i+4)*width*1.1 + 50
+				y += Obj_Deck.cardHeight + 80
+				
+				pileRule = function(_card) {
+					if array_length(pile) <= 0 {
+						return _card.number == 1
+					} else {
+						var numCheck = _card.number == pile[0].number+1
+						var symbolCheck = _card.symbol == pile[0].symbol
+						return numCheck && symbolCheck
+					}
+				}
+			}
 		}
 	}
 	
