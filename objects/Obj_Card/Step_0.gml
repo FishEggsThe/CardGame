@@ -9,3 +9,7 @@ if held {
 	x = lerp(x, gotoX, lerpVal)
 	y = lerp(y, gotoY, lerpVal)
 }
+
+if cardAbove == noone {
+	cardInfo.front = 1
+}

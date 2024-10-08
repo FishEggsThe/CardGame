@@ -52,7 +52,7 @@ function CreateCard(_symbol, _number, _x = x, _y = y, _front = -1) {
 		cardInfo = new Card(_symbol, _number)
 		cardInfo.side = _front
 		cardInfo.front = _front
-		if _front == -1 {cardInfo.FlipCard()}
+		//if _front == -1 {cardInfo.FlipCard()}
 	}
 	array_insert(Obj_CardPriorityCheck.cardQueue, 0, card)
 	return card
@@ -123,14 +123,14 @@ function ShuffleDeck(_deck) {
 	//DebugPrintDeck(_deck)
 }
 
-function DrawFromDeck(_deck, _x, _y) {
+function DrawFromDeck(_deck, _x, _y, _front = 1) {
 	with _deck {
 		if array_length(deck) > 0 {
 			var currDeckSize = array_length(deck)
 			var extraHeight = cardHeight * currDeckSize * heightPixelPercent
 			var trueHeight = extraHeight+cardHeight/2
 							
-			var card = CreateCard(deck[0].symbol, deck[0].number, x, y-trueHeight)
+			var card = CreateCard(deck[0].symbol, deck[0].number, x, y-trueHeight, _front)
 			PlaceCard(_x, _y, card, false)
 							
 			array_delete(deck, 0, 1)

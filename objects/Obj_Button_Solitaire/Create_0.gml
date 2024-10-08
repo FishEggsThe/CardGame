@@ -28,10 +28,10 @@ onClick = function() {
 					return false
 				}
 				
-				var card = DrawFromDeck(deck, x, y)
+				var card = DrawFromDeck(deck, x, y, -1)
 				heldCard = card
 				for(var j = 0; j < numOfExtraCards; j++) {
-					var extraCard = DrawFromDeck(deck, 0, 0)
+					var extraCard = DrawFromDeck(deck, 0, 0, -1)
 					card.cardAbove = extraCard
 					extraCard.cardBelow = card
 					card = extraCard
