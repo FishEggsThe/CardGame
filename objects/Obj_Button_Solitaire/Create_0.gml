@@ -17,6 +17,7 @@ onClick = function() {
 			y += cardHeight + 70
 		}
 		
+		var numOfCards = 1
 		for(var i = 0; i < 7; i++) {
 			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
 				x += width + i*width*1.1 + 50
@@ -26,6 +27,7 @@ onClick = function() {
 					return false
 				}
 			}
+			numOfCards++
 		}
 	}
 	
