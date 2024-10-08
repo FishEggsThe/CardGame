@@ -10,6 +10,6 @@ if held {
 	y = lerp(y, gotoY, lerpVal)
 }
 
-if cardAbove == noone {
+if (cardAbove == noone && Obj_CardPriorityCheck.lastCardBelow == noone) {
 	cardInfo.front = 1
 }
