@@ -7,7 +7,7 @@ if pressedInput+releasedInput {
 	if (pressedInput && heldCard == noone) {
 		var cardPicked = false
 		for(var i = 0; i < array_length(cardQueue); i++) {
-			if position_meeting(mouse_x, mouse_y, cardQueue[i]) {
+			if (position_meeting(mouse_x, mouse_y, cardQueue[i]) && cardQueue[i].cardInfo.front == 1) {
 				cardPicked = true; alarm[0] = setAlarm
 				// Hold selected card
 				with cardQueue[i] {

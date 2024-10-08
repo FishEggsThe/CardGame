@@ -123,7 +123,7 @@ function ShuffleDeck(_deck) {
 	//DebugPrintDeck(_deck)
 }
 
-function DrawFromDeck(_deck, _x, _y, _front = 1) {
+function DrawFromDeck(_deck, _x, _y, _front = -1) {
 	with _deck {
 		if array_length(deck) > 0 {
 			var currDeckSize = array_length(deck)
