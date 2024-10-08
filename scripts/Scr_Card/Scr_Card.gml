@@ -126,17 +126,17 @@ function ShuffleDeck(_deck) {
 function DrawFromDeck(_deck, _x, _y) {
 	with _deck {
 		if array_length(deck) > 0 {
-			if mouse_check_button_pressed(mb_left) {
-				var currDeckSize = array_length(deck)
-				var extraHeight = cardHeight * currDeckSize * heightPixelPercent
-				var trueHeight = extraHeight+cardHeight/2
+			var currDeckSize = array_length(deck)
+			var extraHeight = cardHeight * currDeckSize * heightPixelPercent
+			var trueHeight = extraHeight+cardHeight/2
 							
-				var card = CreateCard(deck[0].symbol, deck[0].number, x, y-trueHeight)
-				PlaceCard(_x, _y, card, false)
+			var card = CreateCard(deck[0].symbol, deck[0].number, x, y-trueHeight)
+			PlaceCard(_x, _y, card, false)
 							
-				array_delete(deck, 0, 1)
-				with Obj_CardPriorityCheck {SetCardDepths()}
-			}
+			array_delete(deck, 0, 1)
+			with Obj_CardPriorityCheck {SetCardDepths()}
+			
+			return card
 		}
 	}
 }

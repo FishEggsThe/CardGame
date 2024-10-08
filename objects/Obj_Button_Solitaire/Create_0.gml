@@ -12,12 +12,13 @@ onClick = function() {
 	
 	var start = function() {
 		var width = sprite_get_width(Msk_Deck)
-		with instance_create_layer(0, 0, "Instances", Obj_Deck) {
+		var deck = instance_create_layer(0, 0, "Instances", Obj_Deck)
+		with deck {
 			x += width + 50
 			y += cardHeight + 70
 		}
 		
-		var numOfCards = 1
+		var numOfExtraCards = 0
 		for(var i = 0; i < 7; i++) {
 			with instance_create_layer(0, 0, "Instances", Obj_CardHolder) {
 				x += width + i*width*1.1 + 50
@@ -26,8 +27,18 @@ onClick = function() {
 					if _card.number == 13 {return true}
 					return false
 				}
+				
+				var card = DrawFromDeck(deck, x, y)
+				heldCard = card
+				for(var j = 0; j < numOfExtraCards; j++) {
+					var extraCard = DrawFromDeck(deck, 0, 0)
+					card.cardAbove = extraCard
+					extraCard.cardBelow = card
+					card = extraCard
+				}
+				PlaceCard(x, y, heldCard, false)
 			}
-			numOfCards++
+			numOfExtraCards++
 		}
 	}
 	

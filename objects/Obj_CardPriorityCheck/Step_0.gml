@@ -36,21 +36,6 @@ if pressedInput+releasedInput {
 			if position_meeting(mouse_x, mouse_y, Obj_Deck) {
 				var deck = instance_nearest(mouse_x, mouse_y, Obj_Deck)
 				DrawFromDeck(deck, deck.x+150, deck.y-deck.cardHeight/2)
-				//with instance_nearest(mouse_x, mouse_y, Obj_Deck) {
-				//	if array_length(deck) > 0 {
-				//		if mouse_check_button_pressed(mb_left) {
-				//			var currDeckSize = array_length(deck)
-				//			var extraHeight = cardHeight * currDeckSize * heightPixelPercent
-				//			var trueHeight = extraHeight+cardHeight/2
-							
-				//			var card = CreateCard(deck[0].symbol, deck[0].number, x, y-trueHeight)
-				//			PlaceCard(x+150, y-cardHeight/2, card, false)
-							
-				//			array_delete(deck, 0, 1)
-				//			with Obj_CardPriorityCheck {SetCardDepths()}
-				//		}
-				//	}
-				//}
 			} else if position_meeting(mouse_x, mouse_y, Obj_Pile) {
 				var nearestPile = instance_nearest(mouse_x, mouse_y, Obj_Pile)
 				with nearestPile {
