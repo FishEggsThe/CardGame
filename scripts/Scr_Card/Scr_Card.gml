@@ -131,6 +131,7 @@ function DrawFromDeck(_deck, _x, _y, _front = -1) {
 			var trueHeight = extraHeight+cardHeight/2
 							
 			var card = CreateCard(deck[0].symbol, deck[0].number, x, y-trueHeight, _front)
+			card.freshFromDeck = true
 			PlaceCard(_x, _y, card, false)
 							
 			array_delete(deck, 0, 1)

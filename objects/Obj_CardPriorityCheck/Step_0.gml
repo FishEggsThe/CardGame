@@ -14,6 +14,7 @@ if pressedInput+releasedInput {
 				lastCardBelow = cardQueue[i].cardBelow
 				// Hold selected card
 				with cardQueue[i] {
+					freshFromDeck = false
 					if cardBelow != noone {
 						if cardBelow.object_index == Obj_CardHolder {
 							cardBelow.heldCard = noone
@@ -95,12 +96,10 @@ if pressedInput+releasedInput {
 					nearestPile.pile = AddToPile(id, nearestPile.pile)
 				}
 			} else if place_meeting(x, y, Obj_CardHolder) {
-				show_debug_message("1. Holder")
+				show_debug_message("Holder")
 				var nearestHolder = instance_nearest(x, y, Obj_CardHolder)
 				if nearestHolder.heldCard == noone {
-					show_debug_message("2. Holder - " + string(cardInfo.number))
 					if nearestHolder.holderRule(cardInfo) {
-						show_debug_message("3. Holder")
 						nearestHolder.heldCard = id
 						cardBelow = nearestHolder
 						PlaceCard(nearestHolder.x, nearestHolder.y, id, false)

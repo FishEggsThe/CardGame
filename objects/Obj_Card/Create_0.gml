@@ -10,4 +10,6 @@ cardAbove = noone
 cardBelow = noone
 mask_index = Msk_Card
 
+freshOffDeck = false
+
 //xOffset = 5; yOffset = 50
